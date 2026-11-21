@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feridas Emocionais – Sergio Lima | Hipnose Clínica</title>
+<meta name="description" content="Encontro ao vivo: nomeie sua ferida dominante (rejeição, abandono, humilhação, traição ou injustiça) e recupere o controle das suas reações. R$ 19,90.">
+<link rel="stylesheet" href="assets/fonts/sora-inter.css">
+<style>
+:root{
+  --bg:#f5f8fc;
+  --surface:#ffffff;
+  --fg:#10233b;
+  --muted:#51637a;
+  --border:#dce6f1;
+  --accent:#0e70cc;
+  --accent-deep:#0a5aa8;
+  --accent-soft:#e7f1fb;
+  --accent-line:#bcd6f0;
+  --navy:#0a1e38;
+  --navy-2:#0f2f55;
+  --ring:0 0 0 3px rgba(14,112,204,.28);
+  --shadow-s:0 1px 2px rgba(16,35,59,.06),0 2px 8px rgba(16,35,59,.06);
+  --shadow-m:0 2px 6px rgba(16,35,59,.06),0 12px 32px rgba(16,35,59,.10);
+  --radius:16px;
+  --display:'Sora',sans-serif;
+  --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);line-height:1.18;letter-spacing:-.015em}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+.kicker{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* ---------- progress ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent-deep),#2f95ef);z-index:200;transition:width .1s linear}
+
+/* ---------- nav ---------- */
+#nav{position:sticky;top:0;z-index:100;background:rgba(245,248,252,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,230,241,.9);transition:box-shadow .25s}
+#nav.scrolled{box-shadow:var(--shadow-s)}
+#nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--fg)}
+.brand .mono{width:38px;height:38px;border-radius:10px;background:linear-gradient(145deg,#1272dd,#0a5aa8);color:#fff;font-family:var(--display);font-weight:700;font-size:16px;display:grid;place-items:center;box-shadow:0 4px 10px rgba(14,112,204,.35)}
+.brand b{font-family:var(--display);font-size:15px;font-weight:600;display:block;line-height:1.2}
+.brand small{font-size:11.5px;color:var(--muted);display:block;line-height:1.2}
+.nav-cta{display:inline-flex;align-items:center;gap:8px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--body);font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;border-radius:12px;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 28px;box-shadow:0 6px 16px rgba(14,112,204,.32)}
+.btn-primary:hover{background:var(--accent-deep);box-shadow:0 8px 20px rgba(10,90,168,.38);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary .arr{transition:transform .18s}
+.btn-primary:hover .arr{transform:translateX(3px)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.38);padding:13px 24px;font-size:15px}
+.btn-ghost:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.08)}
+.btn-small{padding:10px 18px;font-size:14px;border-radius:10px}
+a:focus-visible,button:focus-visible{outline:none;box-shadow:var(--ring);border-radius:12px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(165deg,#081a30 0%,#0c2a4d 48%,#123a66 100%);color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(620px 420px at 82% 8%,rgba(23,109,196,.38),transparent 62%),
+  radial-gradient(520px 380px at 6% 88%,rgba(47,149,239,.20),transparent 60%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 120px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 120px);
+  mask-image:linear-gradient(180deg,#000 0%,transparent 78%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;padding-top:76px;padding-bottom:88px}
+.live-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(231,241,251,.13);border:1px solid rgba(188,214,240,.45);color:#dbe9f8;font-size:13.5px;font-weight:500;padding:7px 15px;border-radius:100px;letter-spacing:.02em}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#43c98a;flex:none;position:relative}
+.live-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(67,201,138,.6);animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.5);opacity:0}}
+.hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:800;margin:20px 0 16px;max-width:14ch}
+.hl{background:linear-gradient(100deg,#6cc0ff 0%,#2f95ef 55%,#0e70cc 110%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:18px;color:#c3d4e6;max-width:46ch;margin-bottom:26px}
+.pain-list{display:grid;gap:11px;max-width:560px;margin-bottom:30px}
+.pain{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:13px 16px;font-size:15px;color:#dbe6f2;backdrop-filter:blur(4px)}
+.pain svg{flex:none;margin-top:1px;color:#4fa4ef}
+.pain strong{color:#fff;font-weight:600}
+.cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.trust{margin-top:18px;font-size:13.5px;color:#8fb0cf;display:flex;align-items:center;gap:8px}
+.trust svg{color:#4fa4ef;flex:none}
+
+.hero-visual{position:relative}
+.frame{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(2,10,24,.55),0 0 0 1px rgba(255,255,255,.14),0 0 0 10px rgba(255,255,255,.05)}
+.frame img{width:100%;height:auto;aspect-ratio:720/900;object-fit:cover}
+.badge{position:absolute;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);color:var(--fg);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;box-shadow:0 10px 26px rgba(2,10,24,.35);line-height:1.3}
+.badge svg{flex:none;color:var(--accent)}
+.badge small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+.badge-1{top:26px;left:-26px;animation:float 6s ease-in-out infinite}
+.badge-2{bottom:34px;right:-22px;animation:float 6s ease-in-out 1.6s infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ---------- strip ---------- */
+.strip{background:linear-gradient(180deg,#123a66 0%,var(--bg) 100%);padding-bottom:4px}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.mini{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-s)}
+.mini b{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:13.5px;font-weight:600;letter-spacing:.02em}
+.mini b svg{color:var(--accent)}
+.mini p{font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.5}
+
+/* ---------- sections ---------- */
+section.block{padding:72px 0}
+.band{background:linear-gradient(180deg,#edf3fa 0%,#f5f8fc 100%)}
+.sec-head{max-width:720px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(26px,3.2vw,38px);font-weight:700;margin-top:10px}
+.sec-head h2 .hl2{color:var(--accent)}
+.sec-head .sub{color:var(--muted);margin-top:12px;font-size:16.5px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head.center .sub{margin-inline:auto}
+
+/* ---------- dor ---------- */
+.grid-dor{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dor-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-s);transition:transform .2s,box-shadow .2s}
+.dor-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.num{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;font-size:14px;display:grid;place-items:center;margin-bottom:14px}
+.dor-card p{font-size:15px;color:var(--fg)}
+.insight{display:flex;gap:18px;align-items:flex-start;background:linear-gradient(120deg,#eaf2fb,#f6fafe);border:1px solid var(--accent-line);border-radius:var(--radius);padding:24px 26px;margin-top:16px}
+.insight .num{background:var(--accent);color:#fff;flex:none;margin:0}
+.insight p{font-size:15.5px}
+.insight strong{color:var(--accent-deep)}
+.ciclo{margin:44px 0 8px}
+.ciclo-title{font-family:var(--display);font-weight:600;font-size:16px;display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.ciclo-title svg{color:var(--accent)}
+.ciclo-flow{display:grid;grid-template-columns:repeat(4,1fr) auto;align-items:center;gap:10px}
+.ciclo-node{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 14px;font-size:13.5px;font-weight:600;text-align:center;box-shadow:var(--shadow-s);position:relative}
+.ciclo-node small{display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:3px}
+.ciclo-node.hot{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow-s)}
+.ciclo-arrow{color:var(--accent-line);display:grid;place-items:center}
+.ciclo-loop{margin-top:12px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;justify-content:center}
+.ciclo-loop svg{color:var(--accent);animation:spin 9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.chip{background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-deep);font-size:13.5px;font-weight:600;padding:7px 15px;border-radius:100px;transition:background .18s,transform .18s}
+.chip:hover{background:#dceaf9;transform:translateY(-1px)}
+.turn{margin-top:34px;padding:18px 22px;border-left:3px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;font-size:15.5px;box-shadow:var(--shadow-s)}
+.turn b{color:var(--accent-deep)}
+
+/* ---------- depoimentos ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.t-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-s);display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s}
+.t-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.t-card .who{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--accent-deep);display:flex;align-items:center;gap:8px}
+.t-card .who::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.t-card p{font-size:14.5px;color:var(--fg)}
+.t-card .res{font-size:14.5px;color:var(--muted);border-top:1px dashed var(--border);padding-top:12px;margin-top:auto}
+.t-card .res strong{color:var(--fg)}
+.model-note{display:flex;gap:9px;align-items:flex-start;background:#fdf6e6;border:1px solid #f0dca8;color:#7a5b12;font-size:13px;border-radius:10px;padding:11px 14px;max-width:640px;margin-top:20px}
+.model-note svg{flex:none;margin-top:2px}
+
+/* ---------- método ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.steps::before{content:"";position:absolute;top:26px;left:6%;right:6%;height:2px;background:linear-gradient(90deg,var(--accent-line),var(--accent));z-index:0}
+.step{position:relative;z-index:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-s);transition:transform .2s,box-shadow .2s}
+.step:hover{transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.step .num{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;box-shadow:0 0 0 6px var(--bg),0 0 0 7px var(--accent-line);font-size:16px}
+.step h3{font-size:16.5px;margin:16px 0 8px}
+.step p{font-size:14.5px;color:var(--muted)}
+.crenca{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.crenca-card{border-radius:var(--radius);padding:26px;font-size:15.5px}
+.crenca-card .label{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px;margin-bottom:12px}
+.crenca-x{background:#faf3f3;border:1px solid #eccfcf}
+.crenca-x .label{color:#b05555}
+.crenca-v{background:linear-gradient(120deg,#eaf2fb,#f4f9ff);border:1px solid var(--accent-line)}
+.crenca-v .label{color:var(--accent-deep)}
+
+/* ---------- para quem ---------- */
+.grid-quem{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.quem-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-s)}
+.quem-card.sim{border-top:4px solid var(--accent)}
+.quem-card.nao{border-top:4px solid #c9d4e0}
+.quem-card h3{font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.quem-card h3 svg{color:var(--accent)}
+.quem-card.nao h3 svg{color:#9aa9ba}
+.quem-card li{list-style:none;display:flex;gap:11px;font-size:15px;padding:10px 0;border-bottom:1px dashed var(--border);align-items:flex-start}
+.quem-card li:last-child{border-bottom:0}
+.quem-card li svg{flex:none;margin-top:3px;color:var(--accent)}
+.quem-card.nao li svg{color:#9aa9ba}
+
+/* ---------- oferta-entrega / bonus ---------- */
+.grid-rec{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rec{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-s);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s}
+.rec:hover{transform:translateY(-3px);box-shadow:var(--shadow-m)}
+.rec .ico{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent)}
+.rec h3{font-size:16.5px}
+.rec p{font-size:14.5px;color:var(--muted);flex:1}
+.rec .val{font-size:13px;color:var(--accent-deep);border-top:1px dashed var(--border);padding-top:11px}
+.rec .val strong{font-size:14px}
+.bonus-tag{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.08em;padding:5px 11px;border-radius:100px;width:max-content}
+
+/* ---------- oferta ---------- */
+.offer{position:relative;background:linear-gradient(150deg,#0a1e38 0%,#0e2c50 60%,#123a66 100%);border-radius:22px;padding:46px 48px;color:#fff;overflow:hidden;box-shadow:0 30px 70px rgba(10,30,56,.35)}
+.offer::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1.5px;background:linear-gradient(135deg,rgba(111,181,255,.7),rgba(255,255,255,.08) 40%,rgba(14,112,204,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.offer::after{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(23,109,196,.30),transparent 65%);top:-200px;right:-140px;pointer-events:none}
+.offer h2{font-size:clamp(26px,3.4vw,40px);font-weight:800;position:relative;z-index:1}
+.offer h2 .hl{background:linear-gradient(100deg,#8fd0ff,#2f95ef)}
+.offer .stack{margin:28px 0 6px;position:relative;z-index:1}
+.offer .stack li{list-style:none;display:flex;justify-content:space-between;gap:14px;padding:12px 2px;border-bottom:1px dashed rgba(255,255,255,.18);font-size:15.5px}
+.offer .stack li span{color:#cdd9e7}
+.offer .stack li strong{font-variant-numeric:tabular-nums}
+.offer .total{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.22);position:relative;z-index:1}
+.total-anchor{font-size:17px;color:#cdd9e7}
+.total-anchor s{color:#8fa9c4;font-weight:600}
+.total-anchor b{color:#fff;font-size:20px;font-family:var(--display)}
+.offer .why{font-size:13.5px;color:#9fb6cd;max-width:52ch;text-align:right}
+.offer .cta-row{margin-top:26px;position:relative;z-index:1}
+.offer .btn-primary{background:linear-gradient(145deg,#1272dd,#0a5aa8);font-size:18px;padding:17px 36px}
+.offer .btn-primary:hover{background:linear-gradient(145deg,#0e64c4,#084c92)}
+.trust-note{margin-top:16px;font-size:13px;color:#9fb6cd;display:flex;align-items:center;gap:8px;position:relative;z-index:1}
+.trust-note svg{flex:none;color:#4fa4ef}
+
+/* ---------- autoridade ---------- */
+.bio{display:flex;gap:36px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:36px;box-shadow:var(--shadow-s);flex-wrap:wrap}
+.bio .foto{flex:none;position:relative}
+.bio .foto img{width:170px;height:170px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 5px var(--surface),0 0 0 7px var(--accent-line),0 18px 36px rgba(16,35,59,.18)}
+.bio .foto .dot{position:absolute;bottom:12px;right:10px;width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;box-shadow:0 6px 14px rgba(14,112,204,.4)}
+.bio h3{font-size:21px;margin-bottom:10px}
+.bio p{font-size:15.5px;color:var(--muted);max-width:62ch}
+.bio .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+/* ---------- faq ---------- */
+.faq{max-width:780px;margin:0 auto}
+.qa{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;box-shadow:var(--shadow-s);overflow:hidden;transition:border-color .2s}
+.qa.open{border-color:var(--accent-line)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;background:none;border:0;font-family:var(--display);font-size:16px;font-weight:600;color:var(--fg);text-align:left;padding:19px 22px;cursor:pointer}
+.qa button svg{flex:none;color:var(--accent);transition:transform .25s}
+.qa.open button svg{transform:rotate(45deg)}
+.qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.qa .ans p{padding:0 22px 20px;font-size:15px;color:var(--muted)}
+.aviso{margin:36px auto 0;max-width:780px;background:#f3f6fa;border:1px solid var(--border);border-radius:14px;padding:20px 24px;font-size:13.5px;color:var(--muted);display:flex;gap:12px}
+.aviso svg{flex:none;color:var(--accent);margin-top:2px}
+.aviso b{color:var(--fg)}
+
+/* ---------- final ---------- */
+.final{position:relative;overflow:hidden;background:linear-gradient(160deg,#081a30,#0e2c50 55%,#123a66);color:#fff;text-align:center;padding:84px 0}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 380px at 50% -10%,rgba(23,109,196,.42),transparent 65%)}
+.final .wrap{position:relative}
+.final h2{font-size:clamp(30px,4vw,46px);font-weight:800;margin:12px 0 14px}
+.final .line{color:#c3d4e6;max-width:38em;margin:0 auto 28px;font-size:17px}
+.final .btn-primary{font-size:18px;padding:17px 36px}
+.final .mini-line{margin-top:16px;font-size:13px;color:#8fb0cf}
+
+/* ---------- footer ---------- */
+footer{background:#081a30;color:#7d94ad;padding:34px 0;font-size:13.5px;text-align:center}
+footer a{color:#a9c4dd}
+
+/* ---------- sticky bar ---------- */
+#stickybar{position:fixed;left:14px;right:14px;bottom:14px;z-index:150;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(10,30,56,.96);backdrop-filter:blur(10px);color:#fff;border-radius:14px;padding:11px 12px 11px 18px;box-shadow:0 14px 34px rgba(2,10,24,.4),0 0 0 1px rgba(255,255,255,.1);transform:translateY(120%);opacity:0;transition:transform .35s,opacity .35s;pointer-events:none}
+#stickybar.show{transform:translateY(0);opacity:1;pointer-events:auto}
+#stickybar span{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+#stickybar span s{color:#8fa9c4;font-weight:500}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:56px;padding-bottom:60px}
+  .hero-visual{max-width:520px;margin:0 auto}
+  .badge-1{left:-8px}
+  .badge-2{right:-8px}
+  .strip .wrap{grid-template-columns:1fr 1fr}
+  .grid-dor,.grid3,.grid-rec{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:14px}
+  .steps::before{display:none}
+  .step .num{box-shadow:0 0 0 6px var(--bg)}
+  .crenca,.grid-quem{grid-template-columns:1fr}
+  .ciclo-flow{grid-template-columns:1fr;gap:6px}
+  .ciclo-arrow{transform:rotate(90deg);height:18px}
+  .offer{padding:34px 26px}
+  .offer .why{text-align:left}
+  section.block{padding:56px 0}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .brand small{display:none}
+  .nav-cta .btn-primary{padding:10px 16px;font-size:13.5px}
+  .pain-list{gap:9px}
+  .pain{font-size:14px;padding:12px 14px}
+  .steps{grid-template-columns:1fr}
+  .strip .wrap{grid-template-columns:1fr}
+  .bio{padding:26px;gap:22px}
+  .cta-row .btn{width:100%}
+  .offer .btn-primary{width:100%}
+  #stickybar{left:10px;right:10px}
+  #stickybar span{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div id="progress" data-od-id="progresso-leitura"></div>
+
+<nav id="nav" aria-label="Navegação principal" data-od-id="navegacao">
+  <div class="wrap">
+    <a class="brand" href="#fd-root">
+      <span class="mono">SL</span>
+      <span><b>Sergio Lima Jr.</b><small>Hipnoterapia · Terapias Regressivas</small></span>
+    </a>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-small" href="#oferta">Quero minha vaga · R$ 19,90</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="fd-root" data-od-id="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="live-pill"><span class="live-dot" aria-hidden="true"></span>Encontro online e ao vivo · vagas abertas</span>
+      <h1>Sua reação adulta tem origem numa <span class="hl">ferida antiga</span></h1>
+      <p class="lead">Rejeição, abandono, humilhação, traição e injustiça se formam antes dos 7 anos e seguem decidindo como você reage, escolhe e se relaciona hoje.</p>
+      <div class="pain-list">
+        <div class="pain"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 4.5-5.5"/></svg><span>Se você repete o mesmo padrão em todo relacionamento, <strong>nomear a ferida dominante</strong> interrompe mais um ano no mesmo ciclo</span></div>
+        <div class="pain"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 4.5-5.5"/></svg><span>Se qualquer crítica te faz travar ou explodir, <strong>entender a máscara da sua ferida</strong> devolve o controle na hora da conversa difícil</span></div>
+        <div class="pain"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 4.5-5.5"/></svg><span>Se o vazio aparece mesmo com a vida resolvida, <strong>localizar a origem na infância</strong> tira a culpa que você carrega sozinha</span></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#oferta">Quero identificar minha ferida dominante <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#metodo">Ver como funciona</a>
+      </div>
+      <p class="trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>Ao vivo com tira-dúvidas · gravação por 7 dias · garantia de 7 dias · sem dado de saúde coletado</p>
+    </div>
+    <div class="hero-visual">
+      <div class="frame">
+        <img src="assets/hero-feridas.jpg" alt="Mãe abraçando a filha com olhos fechados, em luz quente — a criança interior acolhida" width="720" height="900" fetchpriority="high">
+      </div>
+      <div class="badge badge-1"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Antes dos 7 anos<small>onde a ferida se forma</small></span></div>
+      <div class="badge badge-2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span>5 feridas dominantes<small>uma comanda o seu padrão</small></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="mini reveal"><b><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg>Formato</b><p>Online e ao vivo, cerca de 2 horas</p></div>
+    <div class="mini reveal"><b><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Prática</b><p>Auto-hipnose guiada + repetição 10 min/dia</p></div>
+    <div class="mini reveal"><b><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5z"/><path d="M20 17v3H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Material</b><p>Gravação 7 dias + Guia das Máscaras</p></div>
+    <div class="mini reveal"><b><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="3"/><path d="m2 7 10 6L22 7"/></svg>Suporte</b><p>E-mail sem prazo · resposta em 24h úteis</p></div>
+  </div>
+</div>
+
+<section class="block" id="dor" data-od-id="secao-problema">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">O padrão</p>
+      <h2>Você não tem um problema de autoestima. Tem um <span class="hl2">roteiro antigo</span> rodando sozinho</h2>
+    </div>
+    <div class="grid-dor">
+      <div class="dor-card reveal"><span class="num">01</span><p>Você jura que dessa vez vai agir diferente e na primeira mensagem fria já está checando o celular de hora em hora. A ansiedade sobe, a história que você conta para si desanda.</p></div>
+      <div class="dor-card reveal"><span class="num">02</span><p>No trabalho você engole o não que precisava dizer e passa a noite repassando a conversa na cabeça, com culpa física no peito.</p></div>
+      <div class="dor-card reveal"><span class="num">03</span><p>No domingo com a casa cheia sente um vazio que não combina com a vida que construiu. E se pergunta em silêncio o que há de errado com você.</p></div>
+    </div>
+    <div class="insight reveal"><span class="num">04</span><p>A causa não é falta de força. <strong>Antes dos 7 anos cada criança monta uma máscara para sobreviver.</strong> Essa máscara vira piloto automático no adulto. Você reage com 35 anos usando defesa de 6.</p></div>
+    <div class="insight reveal"><span class="num">05</span><p>O inimigo é o conselho raso: pense positivo, esqueça o passado, apenas se ame mais. <strong>Nada disso nomeia qual das 5 feridas comanda seu padrão.</strong> Sem nome, sem endereço, o ciclo repete.</p></div>
+
+    <div class="ciclo reveal" data-od-id="ciclo-piloto-automatico">
+      <p class="ciclo-title"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>O ciclo do piloto automático</p>
+      <div class="ciclo-flow">
+        <div class="ciclo-node hot">Ferida<small>formada antes dos 7 anos</small></div>
+        <div class="ciclo-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="ciclo-node">Máscara<small>a defesa para sobreviver</small></div>
+        <div class="ciclo-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="ciclo-node">Piloto automático<small>reage no lugar de você</small></div>
+        <div class="ciclo-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="ciclo-node">Defesa de 6<small>usada com 35 anos</small></div>
+      </div>
+      <div class="ciclo-loop">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
+        Sem nome, sem endereço, o ciclo repete — é por isso que nomear a ferida é o primeiro passo
+      </div>
+    </div>
+
+    <div class="chips reveal">
+      <span class="chip">Rejeição</span>
+      <span class="chip">Abandono</span>
+      <span class="chip">Humilhação</span>
+      <span class="chip">Traição</span>
+      <span class="chip">Injustiça</span>
+    </div>
+
+    <p class="turn reveal">Se você leu até aqui e pensou <b>“é exatamente assim”</b>, o próximo passo é dar nome à ferida. →</p>
+  </div>
+</section>
+
+<section class="block band" id="prova" data-od-id="secao-prova">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Nomear muda o jogo</p>
+      <h2>Elas nomearam a ferida e o <span class="hl2">padrão quebrou</span> em semanas</h2>
+      <p class="sub">Relatos ilustrativos do perfil atendido. Serão substituídos por depoimentos reais autorizados.</p>
+    </div>
+    <div class="grid3">
+      <div class="t-card reveal"><span class="who">Mariana R., 34 anos · ferida de abandono</span><p>Checava o celular do parceiro toda madrugada e brigava por qualquer demora na resposta.</p><p class="res">Em <strong>21 dias</strong> após identificar a ferida, <strong>cortou as checagens</strong> e voltou a dormir a noite inteira.</p></div>
+      <div class="t-card reveal"><span class="who">Camila S., 39 anos · ferida de humilhação</span><p>Dizia sim para todo pedido no trabalho e chorava no banheiro depois, sem contar para ninguém.</p><p class="res">Em <strong>30 dias</strong>, deu <strong>3 nãos difíceis sem culpa</strong> e foi elogiada na avaliação.</p></div>
+      <div class="t-card reveal"><span class="who">Patrícia L., 31 anos · ferida de traição</span><p>Terminava todo namoro em 3 meses por ciúme e controle de rede social.</p><p class="res">Em <strong>45 dias</strong>, manteve o relacionamento <strong>sem uma crise de perseguição</strong>.</p></div>
+    </div>
+    <div class="model-note reveal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Estes relatos são ilustrativos e serão substituídos por depoimentos reais autorizados — nada aqui é depoimento verificado.</span></div>
+    <div class="cta-row reveal" style="margin-top:26px">
+      <a class="btn btn-primary" href="#oferta">Quero descobrir minha ferida dominante <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="metodo" data-od-id="secao-metodo">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="kicker">O protocolo</p>
+      <h2>Descubra Sua Ferida Dominante · <span class="hl2">Protocolo Mapa da Ferida Dominante</span></h2>
+      <p class="sub">Não tenta apagar o passado. Localiza qual das 5 feridas comanda hoje, mostra a máscara que você veste e conduz uma resposta nova por visualização guiada.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="num">1</span><h3>Nome da ferida</h3><p>Rejeição, abandono, humilhação, traição ou injustiça. Teste guiado ao vivo.</p></div>
+      <div class="step reveal"><span class="num">2</span><h3>Leitura da máscara</h3><p>A defesa que você veste para não sentir a dor, e a frase típica no adulto.</p></div>
+      <div class="step reveal"><span class="num">3</span><h3>Impacto no adulto</h3><p>Como a ferida decide reação, escolha e relacionamento hoje.</p></div>
+      <div class="step reveal"><span class="num">4</span><h3>Acolhimento guiado</h3><p>Auto-hipnose de acolhimento da criança interior, praticada na hora.</p></div>
+    </div>
+    <div class="crenca">
+      <div class="crenca-card crenca-x reveal"><span class="label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>Crença comum</span><p>“Preciso esquecer o passado e pensar positivo.” Sem mapa, você trata sintoma solto com autoestima genérica.</p></div>
+      <div class="crenca-card crenca-v reveal"><span class="label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Realidade do protocolo</span><p>Com o mapa, você trata causa com endereço: ferida nomeada, máscara reconhecida, prática repetida por 7 dias com gravação.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="para-quem" data-od-id="secao-para-quem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Perfil</p>
+      <h2>Feito para você <span class="hl2">se…</span></h2>
+    </div>
+    <div class="grid-quem">
+      <div class="quem-card sim reveal">
+        <h3><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 4.5-5.5"/></svg>Feito para você se…</h3>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Repete o mesmo padrão em relacionamentos e já percebe a origem na infância</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Sente carência, ciúme, dificuldade de dizer não e culpa após explodir</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Já faz terapia ou consome autoconhecimento e quer objetividade</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Topa participar ao vivo e praticar 10 minutos por dia durante 7 dias</span></li>
+        </ul>
+      </div>
+      <div class="quem-card nao reveal">
+        <h3><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>Passe longe se…</h3>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Quer apagar o passado em uma noite sem olhar para a própria história</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Busca diagnóstico ou tratamento de transtorno grave sem acompanhamento profissional</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Não pode estar presente nem ouvir a gravação com atenção na semana</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Espera mágica sem praticar o acolhimento guiado</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="oferta-entrega" data-od-id="secao-recebe">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="kicker">Dentro do encontro</p>
+      <h2>O que você <span class="hl2">recebe</span></h2>
+    </div>
+    <div class="grid-rec">
+      <div class="rec reveal"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none"/></svg></span><h3>Encontro Mapa das 5 Feridas</h3><p>Ao vivo, explicação direta + leitura das máscaras.</p><p class="val">Vale <strong>R$ 97</strong> na versão avulsa</p></div>
+      <div class="rec reveal"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><h3>Teste guiado da Ferida Dominante</h3><p>Aplicação ao vivo para localizar sua ferida.</p><p class="val">Vale <strong>R$ 47</strong> na versão avulsa</p></div>
+      <div class="rec reveal"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 14a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1v-6z"/><path d="M3 14a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1v-6z"/><path d="M19 20a3 3 0 0 1-3 3h-3"/></svg></span><h3>Sessão auto-hipnose Acolhimento</h3><p>Prática conduzida na hora, corpo registra.</p><p class="val">Vale <strong>R$ 67</strong> na versão avulsa</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="bonus" data-od-id="secao-bonus">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="kicker">Além do ao vivo</p>
+      <h2>3 bônus para <span class="hl2">fixar o resultado</span></h2>
+    </div>
+    <div class="grid-rec">
+      <div class="rec reveal"><span class="bonus-tag">Bônus 1</span><h3>Gravação Espelho de 7 Dias</h3><p>Aula completa gravada para repetir a auto-hipnose todos os dias na primeira semana.</p><p class="val">Valor: <strong>R$ 47</strong></p></div>
+      <div class="rec reveal"><span class="bonus-tag">Bônus 2</span><h3>Cupom Continuidade Profunda</h3><p>Desconto para sessão individual com a equipe, válido 30 dias após a aula.</p><p class="val">Valor: <strong>R$ 80</strong></p></div>
+      <div class="rec reveal"><span class="bonus-tag">Bônus 3</span><h3>Guia Mapa Rápido das Máscaras</h3><p>Resumo em 1 página: 5 feridas, máscara e frase típica. Consulta em 2 minutos.</p><p class="val">Valor: <strong>R$ 27</strong></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="oferta" data-od-id="card-oferta">
+  <div class="wrap">
+    <div class="offer reveal">
+      <h2>Hoje: de R$ 97 por <span class="hl">R$ 19,90</span></h2>
+      <ul class="stack">
+        <li><span>Encontro Mapa das 5 Feridas</span><strong>R$ 97</strong></li>
+        <li><span>Teste guiado da Ferida Dominante</span><strong>R$ 47</strong></li>
+        <li><span>Sessão de auto-hipnose guiada</span><strong>R$ 67</strong></li>
+        <li><span>Bônus Gravação Espelho de 7 Dias</span><strong>R$ 47</strong></li>
+        <li><span>Bônus Cupom Continuidade Profunda</span><strong>R$ 80</strong></li>
+        <li><span>Bônus Guia Mapa Rápido das Máscaras</span><strong>R$ 27</strong></li>
+      </ul>
+      <div class="total">
+        <span class="total-anchor">Valor total dos componentes: <s>R$ 365</s> → <b>R$ 19,90</b></span>
+        <span class="why">Preço promocional para alcançar o maior número de pessoas e filtrar comprometidas.</span>
+      </div>
+      <div class="cta-row">
+        <!-- ⚠️ SUBSTITUIR: href do checkout -->
+        <a class="btn btn-primary" href="#oferta">Quero descobrir minha ferida dominante agora <span class="arr">→</span></a>
+      </div>
+      <p class="trust-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>Garantia incondicional de 7 dias · devolvemos 100% · Ao continuar, você concorda com os termos de uso e a política de privacidade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="depo2" data-od-id="secao-resultados">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Depois de aplicar</p>
+      <h2>Quem aplicou saiu do <span class="hl2">piloto automático</span></h2>
+    </div>
+    <div class="grid3">
+      <div class="t-card reveal"><span class="who">Fernanda C., 36 anos [MODELO]</span><p>Antes: checava mensagens 10x por noite, discutia por demora de 20 min, dormia chorando 4 noites/semana. Virada: ferida de abandono + acolhimento 7 noites.</p><p class="res">Em <strong>21 dias zerou as checagens</strong> e voltou a ter <strong>7h de sono</strong>.</p></div>
+      <div class="t-card reveal"><span class="who">Juliana M., 41 anos [MODELO]</span><p>Antes: aceitava demanda de 3 colegas, ia até 22h, culpa física ao dizer não. Virada: ferida de humilhação + Guia das Máscaras.</p><p class="res">Em <strong>30 dias deu 5 nãos limpos</strong> e recebeu <strong>elogio formal</strong>.</p></div>
+      <div class="t-card reveal"><span class="who">Renata A., 33 anos [MODELO]</span><p>Antes: terminava namoro antes de 4 meses, 2h/dia em stories por ciúme. Virada: ferida de traição + gravação por 2 semanas.</p><p class="res">Em <strong>45 dias sem crise</strong>, tela ansiosa caiu para <strong>15 min/dia</strong>.</p></div>
+    </div>
+    <div class="model-note reveal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg><span>Relatos rotulados [MODELO]: ilustrativos do perfil atendido, aguardando depoimentos reais autorizados.</span></div>
+  </div>
+</section>
+
+<section class="block" id="autoridade" data-od-id="secao-autoridade">
+  <div class="wrap">
+    <div class="bio reveal">
+      <div class="foto">
+        <img src="assets/sergio-feridas.jpg" alt="Sergio Lima Jr., hipnoterapeuta, de camisa vinho com braços cruzados" width="480" height="480" loading="lazy">
+        <span class="dot"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg></span>
+      </div>
+      <div>
+        <p class="kicker">Quem conduz</p>
+        <h3>Sergio Lima Jr. · hipnoterapeuta há 5+ anos, foco em regressivas</h3>
+        <p>Conduz encontros ao vivo sobre feridas emocionais, cria conteúdo no @sergiolima.jr e mantém atendimentos presenciais com foco em criança interior. O protocolo nasceu no consultório, ao ver que a maioria travava no mesmo ponto: sabia que era da infância, mas não sabia qual ferida comandava.</p>
+        <div class="tags">
+          <span class="chip">Encontros ao vivo</span>
+          <span class="chip">@sergiolima.jr</span>
+          <span class="chip">Criança interior</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="faq" data-od-id="secao-faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="kicker">Antes de entrar</p>
+      <h2>Perguntas <span class="hl2">reais</span> antes de entrar</h2>
+    </div>
+    <div class="faq reveal" data-od-id="faq-acordeao">
+      <div class="qa"><button aria-expanded="false">Preciso ter feito terapia antes?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>Não. O encontro explica as 5 feridas do zero e guia o teste passo a passo. Quem já faz terapia usa o mapa para acelerar.</p></div></div>
+      <div class="qa"><button aria-expanded="false">Não tenho tempo na semana. Consigo aplicar?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>Sim. O ao vivo tem cerca de 2 horas e a prática diária com a gravação leva 10 minutos por 7 dias.</p></div></div>
+      <div class="qa"><button aria-expanded="false">Nunca fiz hipnose. Vou conseguir?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>A condução é leve e guiada por voz, sem perda de controle. Você segue consciente, apenas com foco interno.</p></div></div>
+      <div class="qa"><button aria-expanded="false">E se eu não puder estar ao vivo?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>Você recebe a gravação de 7 dias e o Guia das Máscaras. O ao vivo dá o tira-dúvidas na hora.</p></div></div>
+      <div class="qa"><button aria-expanded="false">Por que pago R$ 19,90 e não é gratuito?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>Porque gratuito enche de curioso que não aplica. O valor acessível alcança muita gente e filtra quem está comprometida.</p></div></div>
+      <div class="qa"><button aria-expanded="false">E se não funcionar para mim?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>Garantia incondicional de 7 dias. Devolvemos 100% do valor, sem pergunta.</p></div></div>
+      <div class="qa"><button aria-expanded="false">Qual a diferença para um vídeo solto sobre as 5 feridas?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button><div class="ans"><p>Vídeo informa, não localiza. Aqui você sai com a ferida nomeada, a máscara reconhecida e a sessão praticada no corpo.</p></div></div>
+    </div>
+    <div class="aviso reveal" data-od-id="aviso-terapeutico">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      <p><b>Aviso terapêutico e ético.</b> Este encontro é educacional e complementar. Não substitui acompanhamento médico, psicológico ou psiquiátrico, nem orienta decisões sobre medicamentos. Não coletamos dados de saúde nesta página. Se você estiver em sofrimento intenso, procure ajuda imediata: CVV 188 (24h) · SAMU 192.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="final" data-od-id="fechamento">
+  <div class="wrap">
+    <p class="kicker" style="color:#8FB8DE">Última chamada</p>
+    <h2>Nomeie a ferida. <span class="hl">Recupere o controle.</span></h2>
+    <p class="line">De R$ 97 por R$ 19,90 · ao vivo + gravação 7 dias · garantia de 7 dias.</p>
+    <!-- ⚠️ SUBSTITUIR: href do checkout -->
+    <a class="btn btn-primary" href="#oferta">Quero minha vaga agora <span class="arr">→</span></a>
+    <p class="mini-line">Ao vivo com tira-dúvidas · gravação por 7 dias · garantia de 7 dias</p>
+  </div>
+</section>
+
+<footer data-od-id="rodape">
+  <div class="wrap">
+    <p>© Sergio Lima Jr. · @sergiolima.jr · Todos os direitos reservados. Ao continuar, você concorda com os termos de uso e a política de privacidade.</p>
+    <p style="margin-top:6px">Dúvidas? Fale com a equipe pelo e-mail de suporte informado na confirmação da inscrição.</p>
+  </div>
+</footer>
+
+<div id="stickybar" role="complementary" aria-label="Acesso rápido à oferta" data-od-id="barra-fixa-mobile">
+  <span><s>R$ 97</s> R$ 19,90 · Vaga do encontro</span>
+  <!-- ⚠️ SUBSTITUIR: href do checkout -->
+  <a class="btn btn-primary btn-small" href="#oferta">Quero entrar <span class="arr">→</span></a>
+</div>
+
+<script>
+(function(){
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window&&!reduced){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  } else { els.forEach(function(el){el.classList.add('in')}); }
+
+  var nav=document.getElementById('nav');
+  var bar=document.getElementById('stickybar');
+  var hero=document.querySelector('.hero');
+  var final=document.querySelector('.final');
+  var prog=document.getElementById('progress');
+  function onScroll(){
+    var y=window.scrollY||0;
+    var hh=hero?hero.offsetHeight:600;
+    nav.classList.toggle('scrolled',y>8);
+    var fr=final?final.getBoundingClientRect():null;
+    var nearEnd=fr&&fr.top<window.innerHeight;
+    if(y>hh*0.7&&!nearEnd){bar.classList.add('show');}else{bar.classList.remove('show');}
+    var doc=document.documentElement;
+    var max=doc.scrollHeight-doc.clientHeight;
+    prog.style.width=(max>0?(y/max)*100:0)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  document.querySelectorAll('.qa button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var qa=btn.parentElement, ans=qa.querySelector('.ans'), open=qa.classList.contains('open');
+      document.querySelectorAll('.qa.open').forEach(function(o){o.classList.remove('open');o.querySelector('.ans').style.maxHeight='0px';o.querySelector('button').setAttribute('aria-expanded','false');});
+      if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';btn.setAttribute('aria-expanded','true');}
+    });
+  });
+})();
+</script>
+</body>
+</html>
