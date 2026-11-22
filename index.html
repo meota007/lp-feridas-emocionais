@@ -134,6 +134,21 @@ globalThis.tailwind.config = {
   #stickybar .sb-cta:hover{background:#0A5AA8}
   #stickybar .sb-cta:active{transform:scale(.97)}
   #stickybar .sb-cta .material-symbols-outlined{font-size:16px}
+  .sb-actions{display:flex;align-items:center;gap:8px;flex:none}
+  #stickybar .sb-wa{flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:#1EA952;color:#fff;box-shadow:0 8px 20px rgba(30,169,82,.45),inset 0 1px 0 rgba(255,255,255,.2);transition:background .15s,transform .15s}
+  #stickybar .sb-wa:hover{background:#178B41}
+  #stickybar .sb-wa:active{transform:scale(.95)}
+  #stickybar .sb-wa svg{width:20px;height:20px}
+  @media(max-width:370px){
+    .sb-price .sb-note{font-size:9px;padding:2px 6px;letter-spacing:.3px}
+    #stickybar .sb-wa{width:38px;height:38px}
+    #stickybar .sb-wa svg{width:18px;height:18px}
+    #stickybar .sb-cta{font-size:13px;padding:12px 14px}
+  }
+  @media(max-width:340px){
+    .sb-price .sb-note{display:none}
+    #stickybar .sb-cta{font-size:12px;padding:12px 10px}
+  }
 
   /* Revelação ao scroll */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
@@ -955,8 +970,13 @@ globalThis.tailwind.config = {
     <span class="sb-new">R$ 97,00</span>
     <span class="sb-note"><span class="sb-dot" aria-hidden="true"></span>Vagas limitadas</span>
   </div>
-  <!-- ⚠️ SUBSTITUIR: href do checkout -->
-  <a class="sb-cta" href="#oferta">Quero entrar<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+  <div class="sb-actions">
+    <a class="sb-wa" href="https://wa.me/5585994157371?text=Duvidas%20sobre%20o%20encontro%20Feridas%20Emocionais%3F" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" data-od-id="barra-fixa-whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.347-.347.52-.52.174-.174.232-.298.347-.497.116-.198.058-.371-.03-.52-.086-.149-.66-1.588-1.017-2.176-.257-.413-.522-.384-.71-.392-.183-.008-.393-.01-.603-.01-.21 0-.549.079-.836.392-.287.313-1.095 1.07-1.095 2.607 0 1.536 1.122 3.019 1.28 3.229.158.21 2.205 3.365 5.34 4.716.745.322 1.326.514 1.779.658.747.238 1.427.204 1.964.127.599-.09 1.845-.754 2.105-1.483.26-.729.26-1.354.183-1.483-.077-.13-.281-.212-.578-.361zM12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.886 9.886zM20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.454h.006c6.585 0 11.946-5.359 11.949-11.945a11.874 11.874 0 00-3.48-8.408z"/></svg>
+    </a>
+    <!-- ⚠️ SUBSTITUIR: href do checkout -->
+    <a class="sb-cta" href="#oferta">Quero entrar<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+  </div>
 </div>
 
 <script>
